@@ -1,0 +1,21 @@
+<div class="blogsrightbar">
+  <div class="topuserdiv">
+    <h5>Popular account_</h5>
+    <h4>{{topBlogs[0].uname}}</h4>
+  </div>
+  <div class="sidebarcards">
+      <div class="headingdiv">
+        <h5>Popular blogs</h5>
+      </div>
+      <div class="sidecardnil" *ngIf="topBlogs.length == 0">No blogs available</div>
+        <div routerLink="/blog/{{topBlog._id}}" *ngFor="let topBlog of topBlogs" class="sidebarcard" style="--sidecardimgurl:url({{topBlog.image}})">
+         <div class="sidebarcardbgcolor">
+            <p class="sidebarcardtitle">{{topBlog.title}}</p>
+            <div class="sidebarcauthordate">
+              <p class="sidebarcauthor">{{topBlog.uname}}</p>
+              <p class="sidebarcdate">{{topBlog.date | date:'mediumDate'}}</p>
+            </div>
+         </div>
+        </div>
+      </div>
+</div>

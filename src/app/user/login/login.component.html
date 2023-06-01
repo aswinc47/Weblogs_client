@@ -1,0 +1,10 @@
+<!-- Login form -->
+<form [formGroup]="loginForm" class="form-area" (ngSubmit)="login()" >
+    <div>
+        <app-input [controls]="email" placeholder="Email address" type="email" ></app-input>
+    </div>
+    <div>
+        <app-input [controls]="password" type="password" placeholder="Password" ></app-input>
+    </div>
+    <div class="modalbtndiv"><button class="modalbtn buttonmain btn" [disabled]="loginForm.invalid" >Login</button></div>
+</form>

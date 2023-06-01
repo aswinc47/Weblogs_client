@@ -1,0 +1,39 @@
+.form-control{
+  color: var(--primaryblue);
+  background-color: rgba(255, 255, 255);
+  border: 0px;
+  border-radius: 0px;
+  padding-top: 2.5rem;
+  position: relative;
+}
+
+.form-control:focus{
+  color: var(--primaryblue);
+  background-color: rgba(0, 255, 255, 0);
+  outline: none !important;
+  box-shadow: 0 0 0 0.25rem rgba(248, 246, 246, 0);
+  border-width: 0px 0px 2px 0px;
+  border-bottom: solid var(--primaryblue) 2px;
+}
+
+.form-floating>.form-control:not(:placeholder-shown){
+  padding-top: 2.5rem;
+}
+
+.form-floating>.form-control:focus{
+  padding-top: 2.5rem;
+  padding-bottom: 13px;
+}
+
+.form-floating label{
+  color: var(--primaryblue);
+  font-size: 1rem;
+}
+
+.inv{
+  font-size:0.8rem;
+  color: red;
+  font-weight: 600;
+  text-align: end;
+  margin-top: 0.2rem;
+}

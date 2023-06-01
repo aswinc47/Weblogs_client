@@ -1,0 +1,16 @@
+<!-- Register form -->
+<form [formGroup]="registerForm" class="form-area" (ngSubmit)="register()" >
+    <div>
+        <app-input [controls]="uname" placeholder="User Name" ></app-input>
+    </div>
+    <div>
+        <app-input [controls]="email" type="email" placeholder="Email address" ></app-input>
+    </div>
+    <div>
+        <app-input [controls]="password" type="password" placeholder="Password" ></app-input>
+    </div>
+    <div>
+        <app-input [controls]="confirm_password" type="password" placeholder="Confirm Password" ></app-input>
+    </div>
+    <div class="modalbtndiv"><button class="modalbtn buttonmain btn" [disabled]="registerForm.invalid"  >Register</button></div>
+</form>

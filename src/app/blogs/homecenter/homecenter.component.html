@@ -1,0 +1,68 @@
+<div class="blogcolbody mb-4">
+  <div routerLink="/blog/{{bannerBlog._id}}" class="banner">
+      <div class="banner-inner" style="background-image: url({{bannerBlog.image}});      ">
+        <div class="banner-item">
+          <div class="bannercatdiv">
+            <p class="bannercategory">Featured</p>
+            <p class="bannercategory">{{bannerBlog.category}}</p>
+          </div>
+          <div class="bannertitlenamedate">
+            <div class="bannertitlename">
+              <p class="bannertitle">
+                {{bannerBlog.title}}
+              </p>
+              <p class="bannerauthor">
+                {{bannerBlog.uname}}
+              </p>
+            </div>
+            <div>
+              <p class="bannerdate">{{bannerBlog.date | date:'medium'}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Categories -->
+    <div class="categoriesmain">
+      <div class="wrapper">
+        <ul class="tabs-box">
+          <li id="all" class="tab cattab active" (click)="filterblogs('all')">All</li>
+          <li id='{{category}}' *ngFor="let category of us.categories" (click)="filterblogs(category)" class="tab cattab">{{category}}</li>
+        </ul>
+      </div>
+    </div>
+  
+  <!-- Cards -->
+  <div *ngIf="filteredBlogs.length === 0"><h4 class="text-center my-5">No blogs available yet...</h4></div>
+  <div class="cardsdivmain">
+  <div routerLink="/blog/{{blog._id}}" *ngFor="let blog of filteredBlogs 
+  | paginate:{id:'blog_pagination',itemsPerPage: 24, currentPage: page, totalItems:totalBlogs} 
+  | filter:searchKey:'title' " class="blogcardmain" style="background-image:url({{blog.image}});">
+      <div class="cardcategory">
+        <p>{{blog.category}}</p>
+      </div>
+      <div class="cardbottom">
+        <p class="cardtitle">{{blog.title}}</p>
+        <div class="likeandauthor">
+          <div class="likes">
+            <i class="fa-solid fa-thumbs-up"></i>
+            <p class="likecount">{{blog.liked.length}}<span> liked</span></p>
+          </div>
+          <div class="authoranddatecont">
+            <p class="author">{{blog.uname}}</p>
+            <p class="date">{{blog.date | date:'mediumDate' }}</p>
+          </div>
+        </div>
+      </div>
+  </div>
+  </div>
+  <div>
+    <pagination-controls class="paginationdiv" [autoHide]="true"
+    [responsive]="true" id="blog_pagination" (pageChange)="page = $event"></pagination-controls>
+  </div>
+</div>
+<app-modal *ngIf="this.bs.showblogmodal" id="blogmodal">
+  <h6>{{this.bs.blogmessage}}</h6>
+</app-modal>
+<app-footer></app-footer>
+

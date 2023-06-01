@@ -1,0 +1,82 @@
+.viewtitle{
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    margin-left: 2rem;
+}
+.viewbloghead{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.viewblogeditdel i{
+    margin-left: 4rem;
+    font-size: 1.5rem;
+    padding-right: 4rem;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+.viewblogeditdel i:hover{
+    transform: scale(1.3);
+}
+.viewtop{
+    margin-bottom: 2rem;
+}
+.viewblogmain{
+    padding: 2rem 11rem;
+}
+
+.descriptionside{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-inline: 5rem 4rem;
+}
+.viewlikes{
+    display: flex;
+    align-items: center;
+}
+.viewlikes h4{
+    font-size: 1rem;
+    font-weight: 500;
+}
+.viewlikes i{
+    font-size: 2rem;
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.viewlikes i:hover{
+    transform: scale(1.3);
+}
+
+.viewcardauthor h5{
+    font-size: 1rem;
+}
+.viewbody{
+    font-size: 1.1rem;
+    padding-inline: 2rem;
+    text-align: justify;
+}
+.viewbody span{
+    font-size: 2rem;
+}
+@media (max-width:800px) {
+    .viewblogmain{
+        padding: 1em 0;
+    }
+    .descriptionside{
+        padding-inline: 2em;
+        padding-block: 1em;
+    }
+    .likes-author{
+        display: inline;
+    }
+    .viewcardauthor{
+        margin-top: 1em;
+    }
+    .viewcardauthor h5{
+        font-size: 0.9em;
+    }
+}

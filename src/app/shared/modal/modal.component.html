@@ -1,0 +1,16 @@
+<!-- Auth form -->
+<div [ngClass]="{'hidden':!modal.isVisible(id)}" class="modalsec"  >
+    
+    <!-- opaque background -->
+    <div class="position-fixed modalbg" (click)="modal.toggleVisibility(id)" ></div>
+
+    <div class="modaloutline">
+        <div class="modalhead">
+            <h1>Weblogs</h1>
+            <button (click)="modal.toggleVisibility(id)" class="btn-close"></button>
+        </div>
+
+        <ng-content></ng-content> 
+
+    </div>
+</div>

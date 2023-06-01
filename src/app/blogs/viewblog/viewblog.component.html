@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+<div class="row blogmainrow">
+  <div class="viewblogmain col-md-10">
+      <div class="viewbloghead">
+        <h1 class="viewtitle">{{blog.title}}</h1>
+        <div *ngIf="userblog" class="viewblogeditdel">
+          <i routerLink="/edit/{{blog._id}}" class="fa-solid fa-pen-to-square"></i>
+          <i (click)="toggleDelete($event)" class="fa-solid fa-trash"></i>
+        </div>
+      </div>
+      <div class="row viewtop">
+        <div class="col-md-4 viewimage">
+          <img class="w-100" src={{blog.image}} alt="">
+        </div>
+        <div class="col-md-8 descriptionside">
+          <p class="viewdescription">{{blog.description}}</p>
+          <div class="likes-author">
+            <div class="viewlikes"><i (click)="like()"  class="fa-{{liked?'solid':'regular'}} fa-thumbs-up"></i> 
+              <h4 *ngIf="blog.liked.length>0" >Liked by {{blog.liked[blog.liked.length - 1]}}
+                <span *ngIf="blog.liked.length > 2"> and {{blog.liked.length - 1}} others</span>
+                <span *ngIf="blog.liked.length == 2"> and {{blog.liked.length - 1}} other</span>
+              </h4>
+              <h4 *ngIf="blog.liked.length == 0" >No likes yet</h4> </div>
+            <div class="viewcardauthor">
+                <h5>{{blog.uname}}</h5>
+                <h5>{{blog.date | date:'medium'}}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div [innerText]="blogContent" class="viewbody">
+          <!-- <p>{{blogContent}}</p> -->
+      </div>
+    </div>
+    <div class="col-md-2">
+      <app-rightsidebar></app-rightsidebar>
+    </div>
+    <app-modal *ngIf="showDelete" id="deleteConfirm">
+      <h6 class="logouthead">You really want to delete this blog?</h6>
+      <div class="logoutbtngroup">
+        <button (click)="deleteBlog()" class="buttonmain logoutbtn btn-primary btn">Yes</button>
+        <button (click)="this.modal.toggleVisibility('deleteConfirm')" class="buttonmain logoutbtn btn-primary btn">No</button>
+      </div>
+    </app-modal>
+</div>

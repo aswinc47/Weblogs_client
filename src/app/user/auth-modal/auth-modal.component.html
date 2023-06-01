@@ -1,0 +1,14 @@
+<app-modal id="auth">
+    <app-tabs>
+        <app-alert *ngIf="this.userService.showAlert"
+         [alertText]="this.userService.alertText"
+        [color]="this.userService.alertColor"></app-alert>
+
+        <app-tab tabTitle="Login">
+            <app-login></app-login>
+        </app-tab>
+        <app-tab tabTitle="Register">
+            <app-register></app-register>
+        </app-tab>
+    </app-tabs> 
+</app-modal>

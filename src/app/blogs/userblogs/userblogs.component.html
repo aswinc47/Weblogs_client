@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+<div class="row blogmainrow">
+    <div class="col-md-2">
+        <app-leftsidebar></app-leftsidebar>
+    </div>
+    <div class="col-md-8">
+        <h3 class="yourbloghead">Your blogs</h3>
+        <div *ngIf="userBlogs.length == 0">
+            <p class="yourblognil">You have not posted yet.....</p>
+        </div>
+        <div class="cardsdivmain">
+            <div routerLink="/blog/{{blog._id}}" *ngFor="let blog of userBlogs 
+            | paginate:{id:'userblog_pagination',itemsPerPage: 24, currentPage: page, totalItems:totalBlogs} " class="blogcardmain" style="background-image:url({{blog.image}});">
+                <div class="cardcategory">
+                  <p>{{blog.category}}</p>
+                </div>
+                <div class="cardbottom">
+                  <p class="cardtitle">{{blog.title}}</p>
+                  <div class="likeandauthor">
+                    <div class="likes">
+                      <i class="fa-solid fa-thumbs-up"></i>
+                      <p class="likecount">{{blog.liked.length}}<span> liked</span></p>
+                    </div>
+                    <div class="authoranddatecont">
+                      <p class="author">{{blog.uname}}</p>
+                      <p class="date">{{blog.date | date:'mediumDate' }}</p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div>
+          <pagination-controls class="paginationdiv" [autoHide]="true"
+          [responsive]="true" id="userblog_pagination" (pageChange)="page = $event"></pagination-controls>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <app-rightsidebar></app-rightsidebar>
+    </div>
+</div>

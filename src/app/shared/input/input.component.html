@@ -1,0 +1,24 @@
+<div class="form-floating">
+    <input [formControl]="controls" [type]="type" class="form-control"  placeholder="name@example.com">
+    <label for="floatingInput">{{placeholder}}</label>
+<ng-container *ngIf="controls.touched && controls.dirty" class="text-danger mb-3">
+    <p class="inv" *ngIf="controls.errors?.required">
+        Field is required
+    </p>
+    <p class="inv" *ngIf="controls.errors?.minlength">
+        Minimum character required is {{controls.errors?.minlength.requiredLength}}
+    </p>
+    <p class="inv" *ngIf="controls.errors?.maxlength">
+        Maximum character possible is {{controls.errors?.maxlength.requiredLength}}
+    </p>
+    <p class="inv" *ngIf="controls.errors?.email">
+        Invalid email address
+    </p>
+    <p class="inv" *ngIf="controls.errors?.pattern">
+        Can't use special characters
+    </p>
+    <p class="inv" *ngIf="controls.errors?.notMatching">
+        Passwords not matching
+    </p>
+</ng-container>
+</div>

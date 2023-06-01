@@ -1,0 +1,70 @@
+<app-navbar></app-navbar>
+<section class="">
+  <div class="row blogmainrow">
+    <div class="col-md-2">
+      <app-leftsidebar></app-leftsidebar>
+    </div>
+    <div class="createblogmain col-md-10">
+      <form [formGroup]="blogCreationForm" (ngSubmit)="createBlog()" class="row">
+          <div class="col-md-8">
+              <app-input [controls]="title" placeholder="Blog Title" ></app-input>
+              <app-input [controls]="description" placeholder="Description"></app-input>
+              <div class="form-floating mb-3">
+                <textarea [formControl]="blogContent" rows="20" cols="100" class="form-textarea form-control"  placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                <label for="floatingTextarea2">Blog Content</label>
+                  <p class="inv" *ngIf="this.blogCreationForm.get('blogContent')?.errors?.required &&
+                  this.blogCreationForm.get('blogContent')?.touched" >
+                  Field is required
+                  </p>
+                  <p class="inv" *ngIf="this.blogCreationForm.get('blogContent')?.errors?.minlength &&
+                  this.blogCreationForm.get('blogContent')?.touched" >
+                  Min length 150
+                  </p>
+              </div>
+          </div>
+  
+          <div class="col-md-4">
+            <div class="form-floating mb-3">
+              <select [formControl]="category" class="categoryselect form-control" aria-label="Default select example">
+                <option value="" selected >Select a category</option>
+                <option *ngFor="let category of us.categories" value={{category}}>{{category}}</option>
+              </select>
+              <div>
+                  <p class="inv" *ngIf="this.blogCreationForm.get('category')?.errors &&
+                  this.blogCreationForm.get('category')?.touched">
+                  Choose a category.
+                  </p>
+              </div>
+            </div>
+            <div class="mb-3">
+              <img id="submitpreview" class="selectprevimg mb-3" [src]="imgSrc || 'https://www.pulsecarshalton.co.uk/wp-content/uploads/2016/08/jk-placeholder-image.jpg'" alt="">
+              <input class="imgselect form-control" accept="image/*" (change)="showPreview($event)" type="file" id="formFile">
+              <!-- <div>
+                  <p class="inv" *ngIf="this.blogCreationForm.get('image')?.errors &&
+                  this.blogCreationForm.get('image')?.touched">
+                  Upload an image.
+                  </p>
+              </div> -->
+          </div>
+            <button type="submit" (click)="cancel($event)" class="buttonmain createcancelbtn btn mt-3 ">Cancel</button>
+            <button type="submit" class="buttonmain createbtn btn mt-3" [disabled]="blogCreationForm.invalid"  >Submit</button>
+          </div>
+      </form>
+  </div>
+  </div>
+</section>
+<app-modal id="cancelSubmit">
+  <h6 class="text-center my-3">{{this.bs.createblogmessage}}</h6> 
+  <div [ngSwitch]="this.bs.createblogbutton" >
+    <div *ngSwitchCase="'cancel'" class="logoutbtngroup">
+      <button routerLink="/blogs" class="buttonmain logoutbtn btn-primary btn">Yes</button>
+      <button (click)="this.modal.toggleVisibility('cancelSubmit')" class="buttonmain logoutbtn btn-primary btn">No</button>
+    </div>
+    <div *ngSwitchCase="'upload'" class="logoutbtngroup">
+      <button (click)="this.modal.toggleVisibility('cancelSubmit')" class="buttonmain logoutbtn btn-primary btn">Ok</button>
+    </div>
+    <div *ngSwitchCase="'gohome'" class="logoutbtngroup">
+      <button (click)="goHome()" class="buttonmain logoutbtn btn-primary btn">Ok</button>
+    </div>
+  </div>
+</app-modal>

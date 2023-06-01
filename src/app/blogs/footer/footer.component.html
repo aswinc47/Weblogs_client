@@ -1,0 +1,38 @@
+<!-- Footer -->
+<div class="footer">
+    <div class="copyright">
+        <h2 class="navbar-brand" routerLink="/">Weblogs</h2>
+        <h6>WEBLOG &#169; 2023</h6>
+    </div>
+    <div class="connect">
+        <h5>_CONNECT</h5>
+        <div class="connect-icons">
+        <a href="aswinvipin11@gmail.com" ><i class="fa-solid fa-at"></i></a>
+        <a href="https://www.linkedin.com/in/aswin47/"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://github.com/aswinc47"><i class="fa-brands fa-github"></i></a>
+        </div>
+    </div>
+    <div class="abouts">
+        <a class="aboutlinks">Privacy Policy</a>
+        <a class="aboutlinks">Terms and Conditions</a>
+        <a class="aboutlinks">About</a>
+        <a (click)="deleteModalOpen($event)" class="aboutlinks">Delete account</a>
+    </div>
+</div>
+
+<app-modal *ngIf="showDeletemodal" id="deleteAccount">
+    <h6 class="deletemodalhead">Are you sure you want to delete the account?</h6>
+    <app-alert *ngIf="this.userService.showAlert"
+    [alertText]="this.userService.alertText"
+   [color]="this.userService.alertColor"></app-alert>
+   <!-- Delete form -->
+    <form [formGroup]="deleteForm" class="form-area" (ngSubmit)="deleteAccount()" >
+        <div>
+            <app-input [controls]="email" placeholder="Email address" type="email" ></app-input>
+        </div>
+        <div>
+            <app-input [controls]="password" type="password" placeholder="Password" ></app-input>
+        </div>
+        <div class="modalbtndiv"><button class="modalbtn buttonmain btn mt-2" [disabled]="deleteForm.invalid" >Confirm Delete</button></div>
+    </form>
+</app-modal>

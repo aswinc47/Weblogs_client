@@ -1,0 +1,35 @@
+<div class="sidebar">
+  <div class="profilebox">
+      <h3>{{username}}</h3>
+      <p>{{email}}</p>
+      <p>Blogs : {{userblognumbers}}</p>
+    </div>
+    <div class="sidebarbtndiv">
+    <button routerLink="/blogs/create" class="btn buttonmain sidebarbtn">Create new blog</button>
+    </div>
+        <div class="sidebarcards">
+          <div class="headingdiv">
+            <h5>Your blogs</h5><a href="/blogs/userblog">More...</a>
+          </div>
+          <div class="sidecardnil" *ngIf="userBlogs.length == 0">No blogs available</div>
+          <div routerLink="/blog/{{userBlog._id}}" *ngFor="let userBlog of userBlogs" class="sidebarcard" style="--sidecardimgurl:url({{userBlog.image}})">
+            <div class="sidebarcardbgcolor">
+              <p class="sidebarcardtitle">{{userBlog.title}}</p>
+              <div class="sidebarcauthordate">
+                <p class="sidebarcauthor">{{userBlog.uname}}</p>
+                <p class="sidebarcdate">{{userBlog.date | date:'mediumDate'}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sidebarbtndiv">
+          <button (click)="openLogoutModal($event)" class="btn buttonmain sidebarbtn">Logout</button>
+        </div>
+</div>
+<app-modal *ngIf="showLogout" id="logout" >
+  <h6 class="logouthead">You want to logout of the account {{username}}?</h6>
+  <div class="logoutbtngroup">
+    <button (click)="this.us.logout()" class="buttonmain logoutbtn btn-primary btn">Yes</button>
+    <button (click)="this.modal.toggleVisibility('logout')" class="buttonmain logoutbtn btn-primary btn">No</button>
+  </div>
+</app-modal>

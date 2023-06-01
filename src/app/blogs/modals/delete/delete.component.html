@@ -1,0 +1,7 @@
+<app-modal id="deleteConfirm">
+    <h6 class="logouthead">You really want to delete this blog?</h6>
+    <div class="logoutbtngroup">
+      <button (click)="deleteBlog()" class="buttonmain logoutbtn btn-primary btn">Yes</button>
+      <button (click)="this.modal.toggleVisibility('deleteConfirm')" class="buttonmain logoutbtn btn-primary btn">No</button>
+    </div>
+</app-modal>

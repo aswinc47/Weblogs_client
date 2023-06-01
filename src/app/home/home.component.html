@@ -1,0 +1,25 @@
+<app-navbar [isLoggedin]="false" ></app-navbar>
+<app-auth-modal *ngIf="this.us.hideAuth"></app-auth-modal>
+<div class="row home">
+  <div class="col-md-4 home2">
+    <img class="home2img" src="https://images.unsplash.com/photo-1542435503-956c469947f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80" alt="">
+  </div>
+  <div class="col-md-8 home1">
+    <div class="home1inner">
+      <h5>__WEBLOGS</h5>
+      <h1>Publish your passions, your way</h1>
+      <p>Whether sharing your expertise, breaking news, or whatever’s on your mind, you’re in good company on Blogger. Sign up to discover why millions of people have published their passions here.</p>
+        <div>
+          <button (click)="homeCreate()" class="buttonmain home1btn btn">
+            Start creating
+          </button>
+        </div>
+    </div>
+  </div>
+</div>
+<app-modal id="loginreq" >
+  <h6 class="text-center">{{this.us.homemessage}}</h6>
+  <div class="text-center mt-3">
+    <button (click)="openLogin($event)" class="buttonmain logoutbtn btn-primary btn">Login/Register</button>
+  </div>
+</app-modal>

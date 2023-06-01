@@ -1,0 +1,9 @@
+<!-- Tabs -->
+<div class="d-flex text-center tabs">
+    <div *ngFor="let tab of tabs" (click)="setActive(tab)"
+    [ngClass]="tab.active?'tab1':'tab2'"
+    class="tab w-50 btn rounded-0">
+        <p>{{tab.tabTitle}}</p>
+    </div>
+</div>
+<ng-content></ng-content>

@@ -1,0 +1,64 @@
+.footer{
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 12rem;
+    align-items: center;
+    padding-block: 2rem;
+    border-top: 1px black solid;
+    margin-top: 7rem;
+  }
+  
+  .copyright h6{
+    font-size: 0.8rem;
+  }
+  
+  .connect h5{
+    font-size: 0.9rem;
+    margin: 0.3rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  .connect-icons a{
+    margin-inline: 0.8rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+  }
+  .connect-icons a i{
+    transition: 0.2s ease-in-out;
+  }
+  .connect-icons a i:hover{
+    transform: scale(1.2);
+  }
+  
+  .abouts{
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+  }
+  .aboutlinks{
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: black;
+    transition: 0.2s ease-in-out;
+  }
+  .abouts a:hover{
+    color: black;
+    text-decoration: underline;
+  }
+  .deletemodalhead{
+    font-size: 1.1rem;
+    text-align: center;
+    margin-block: 1rem;
+  }
+
+  @media (max-width:800px) {
+    .footer{
+      padding-inline: 1em;
+    }
+    .copyright{
+      display: none;
+    }
+  }

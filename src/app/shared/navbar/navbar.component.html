@@ -1,0 +1,17 @@
+<nav class="headernav">
+  <div class="container-fluid headernav-cont">
+    <h2 class="navbar-brand" routerLink="/blogs" >Weblogs</h2>
+    <button *ngIf="!isLoggedin" (click)="openModal($event)" class="buttonmain btn navbtn">
+      Login/Register
+    </button>
+    <div *ngIf="isLoggedin" class="navsearch">
+      <div>
+        <div class="form-floating searchbar">
+          <input [(ngModel)]="searchTerm" type="text" class="form-control navsearchinput"  placeholder="name@example.com">
+          <label for="floatingInput" class="navlabel">Search blogs</label>
+        </div>
+      </div>
+      <div><button class="buttonmain btn searchbutton" (click)="search()">Search</button></div>
+    </div>
+  </div>
+</nav>
